@@ -1,20 +1,20 @@
 import styled from 'styled-components'
 
 // const toastTypeVariations = {
-//   success: css`
-//     background: #e6fffa;
-//     color: #2e656a;
-//   `,
+// success: css`
+//   background: #e6fffa;
+//   color: #2e656a;
+// `,
 
-//   info: css`
-//     background: #ebf8ff;
-//     color: #3172b7;
-//   `,
+// info: css`
+//   background: #ebf8ff;
+//   color: #3172b7;
+// `,
 
-//   error: css`
-//     background: #fddede;
-//     color: #c53030;
-//   `,
+// error: css`
+//   background: #fddede;
+//   color: #c53030;
+// `,
 // }
 
 // interface ToastProps {
@@ -38,10 +38,6 @@ export const Container = styled.div`
 //   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 //   display: flex;
 
-//   & + div {
-//     margin-top: 8px;
-//   }
-
 //   ${(props) => toastTypeVariations[props.type || 'info']}
 //   > svg {
 //     margin: 4px 12px 0 0;
@@ -49,21 +45,21 @@ export const Container = styled.div`
 //   div {
 //     flex: 1;
 //   }
-//   p {
-//     margin-top: 4px;
-//     font-size: 14px;
-//     opacity: 0.8;
-//     line-height: 20px;
-//   }
-//   button {
-//     position: absolute;
-//     right: 16px;
-//     top: 19px;
-//     opacity: 0.6;
-//     background: transparent;
-//     border: 0;
-//     color: inherit;
-//   }
+// p {
+//   margin-top: 4px;
+//   font-size: 14px;
+//   opacity: 0.8;
+//   line-height: 20px;
+// }
+// button {
+//   position: absolute;
+//   right: 16px;
+//   top: 19px;
+//   opacity: 0.6;
+//   background: transparent;
+//   border: 0;
+//   color: inherit;
+// }
 
 //   ${(props) =>
 //     !props.hasDecription &&

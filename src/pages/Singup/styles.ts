@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import signupBakground from '../../assets/singup.png'
+import signupBakground from '../../components/assets/singup.png'
 import { shade } from 'polished'
 
 export const Container = styled.div`

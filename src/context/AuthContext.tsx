@@ -3,7 +3,14 @@ import api from '../services/api'
 
 interface AuthState {
   token: string
-  user: object
+  user: User
+}
+
+interface User {
+  id: string
+  email: string
+  avatar_url: string
+  name: string
 }
 
 interface SignInCredentials {
@@ -13,7 +20,7 @@ interface SignInCredentials {
 
 interface AuthContextData {
   name: string
-  user: object
+  user: User
   signIn(credentials: SignInCredentials): Promise<void>
   singOut(): void
 }
@@ -25,6 +32,7 @@ const AuthProvider: React.FC = ({ children }) => {
     const token = localStorage.getItem('@Gobarber:token')
     const user = localStorage.getItem('@Gobarber:user')
     if (token && user) {
+      api.defaults.headers.authorization = `Bearer ${token}`
       return { token, user: JSON.parse(user) }
     }
     return {} as AuthState
@@ -37,6 +45,7 @@ const AuthProvider: React.FC = ({ children }) => {
     const { token, user } = response.data
     localStorage.setItem('@Gobarber:token', token)
     localStorage.setItem('@Gobarber:user', JSON.stringify(user))
+    api.defaults.headers.authorization = `Bearer ${token}`
     setData({ token, user })
   }, [])
 

@@ -20,10 +20,10 @@ const toastTypeVariations = {
 
 interface ToastProps {
   type?: 'info' | 'success' | 'error'
-  hasDecription?: boolean
+  hasdecription?: number
 }
 
-export const Container = styled(animated.div)<ToastProps>`
+export const Container = styled(animated.div) <ToastProps>`
   width: 360px;
   padding: 16px 30px 16px 16px;
   position: relative;
@@ -59,7 +59,7 @@ export const Container = styled(animated.div)<ToastProps>`
   }
 
   ${(props) =>
-    !props.hasDecription &&
+    !props.hasdecription &&
     css`
       align-items: center;
       svg {
