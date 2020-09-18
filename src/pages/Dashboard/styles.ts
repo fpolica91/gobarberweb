@@ -47,8 +47,14 @@ export const Profile = styled.div`
     span {
       color: #f4ede8;
     }
-    strong {
+    a {
       color: #ff9000;
+      text-decoration: none;
+      strong {
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
   }
 `
@@ -140,6 +146,9 @@ export const Section = styled.section`
     display: block;
     margin-bottom: 16px;
     padding-bottom: 16px;
+  }
+  > p {
+    color: #999591;
   }
 `
 
