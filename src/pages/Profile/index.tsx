@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useRef, ChangeEvent } from 'react'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
 import { FiMail, FiLock, FiUser, FiCamera, FiArrowLeft } from 'react-icons/fi'
@@ -46,7 +46,24 @@ const Profile: React.FC = () => {
     },
     [addToast]
   )
-  const { user } = useAuth()
+  const { user, updateUser } = useAuth()
+  const handleAvatarChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files) {
+        const data = new FormData()
+        data.append('avatar', e.target.files[0])
+        api.patch('/users/avatar', data).then((response) => {
+          updateUser(response.data)
+          addToast({
+            type: 'success',
+            title: 'Succesfully updated avatar',
+            description: 'Your avatar was updated successfully',
+          })
+        })
+      }
+    },
+    [addToast, updateUser]
+  )
 
   return (
     <Container>
@@ -64,20 +81,15 @@ const Profile: React.FC = () => {
               name: user.name,
               email: user.email,
             }}
-            onSubmit={handleSubmit}
+            onSubmit={() => {}}
             ref={formRef}
           >
             <AvatarInput>
-              <img
-                src={
-                  user.avatar_url ||
-                  'https://api.adorable.io/avatars/56/chloe@adorable.io.png'
-                }
-                alt={user.name}
-              />
-              <button>
+              <img src={user.avatar_url} alt={user.name} />
+              <label htmlFor="avatar">
                 <FiCamera />
-              </button>
+                <input type="file" id="avatar" onChange={handleAvatarChange} />
+              </label>
             </AvatarInput>
             <h1>My Profile </h1>
 
